@@ -6,10 +6,10 @@ public class PlayerMove : MonoBehaviour
 {
     private float h = 0.0f;
     private float v = 0.0f;
-    private float r = 0.0f;
+    // private float r = 0.0f;
 
     float moveSpeed = 5.0f;
-    float rotSpeed = 180f;
+    // float rotSpeed = 180f;
     Transform tr;
     // Start is called before the first frame update
     void Start()

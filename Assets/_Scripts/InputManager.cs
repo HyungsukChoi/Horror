@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    public static InputManager Instance;
     public Camera fpsCam;
     public Transform PlayerTr;
     public float moveSpeed = 5f; // 이동 속도
     public float rotSpeed = 3f;      // 회전 속도
     public float currentRot;
+
+    private void Awake()
+    {
+        #region Singleton
+        if (Instance == null)
+            Instance = this;
+        #endregion
+    }
 
     // Start is called before the first frame update
     void Start()

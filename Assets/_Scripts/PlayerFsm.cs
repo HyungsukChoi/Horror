@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class PlayerFsm : MonoBehaviour
 {
+    public static PlayerFsm Instance;
+
+
+    private void Awake()
+    {
+        #region Singleton
+        if (Instance == null)
+            Instance = this;
+        #endregion
+    }
     // Start is called before the first frame update
     void Start()
     {
-        312
+
     }
 
     // Update is called once per frame
