@@ -26,15 +26,18 @@ public class UIManager : MonoBehaviour
 
     public void OnClickStart()
     {
+        // 새로운 씬 불러오기
         SceneManager.LoadScene("MainScene");
     }
 
     public void OnClickContinue()
     {
-        // startUI.SetActive(false);
+        // 저장된 씬 불러오기
+        SceneManager.LoadScene("SavedScene");
     }
 
     public void OnClickExit()
     {
+
     }
 }
