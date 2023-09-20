@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
+    
     public Camera fpsCam;
     public Transform PlayerTr;
+    public float height = 1;
     public float moveSpeed = 5f; // 이동 속도
     public float rotSpeed = 3f;      // 회전 속도
     public float currentRot;
@@ -13,7 +15,7 @@ public class InputManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        PlayerTr = GetComponent<Transform>();
     }
 
     // Update is called once per frame
