@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InputManager : MonoBehaviour
 {
-    
+    Animator playerAnim;
     public Camera fpsCam;
     public Transform PlayerTr;
     public float height = 1;
@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
         PlayerTr = GetComponent<Transform>();
+        playerAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -25,6 +26,8 @@ public class InputManager : MonoBehaviour
         float moveZ = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.forward * moveX * moveSpeed * Time.deltaTime);
+        playerAnim.SetFloat("Speed", moveX * moveSpeed * Time.deltaTime);
+        
         transform.Translate(Vector3.right * moveZ * moveSpeed * Time.deltaTime);
 
         float rotateX = Input.GetAxis("Mouse Y") * rotSpeed;

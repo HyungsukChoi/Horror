@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class PlayerFsm : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private MouseRotate rotateToMouse;
+
+    private void Awake()
     {
-        
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+
+        rotateToMouse = GetComponent<MouseRotate>();
+    }
+
+    // Start is called before the first frame update
+
+    private void UpdateRotate()
+    {
+        float mouseX = Input.GetAxis("Mouse X");
+        float mouseY = Input.GetAxis("Mouse Y");
+
+        rotateToMouse.Rotate(mouseX, mouseY);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateRotate();
     }
 }
