@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class MouseRotate : MonoBehaviour
 {
+    public static MouseRotate Instance;
     // 카메라 회전속도 x,y
     [SerializeField]
     private float camRotateSpeedX = 3;
@@ -16,8 +17,16 @@ public class MouseRotate : MonoBehaviour
     private float limitMinX = -70;
     private float limitMaxX = 50;
 
-    private float eulerAngleX;
-    private float eulerAngleY;
+    public  float eulerAngleX;
+    public float eulerAngleY;
+
+    private void Awake()
+    {
+        #region Singleton
+        if (Instance == null)
+            Instance = this;
+        #endregion
+    }
 
     public void Rotate(float mouseX, float mouseY)
     {

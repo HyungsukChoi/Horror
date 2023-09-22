@@ -5,39 +5,33 @@ using UnityEngine;
 public class InputManager : MonoBehaviour
 {
     Animator playerAnim;
-    public Camera fpsCam;
-    public Transform PlayerTr;
-    public float height = 1;
     public float moveSpeed = 5f; // 이동 속도
-    public float rotSpeed = 3f;      // 회전 속도
-    public float currentRot;
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerTr = GetComponent<Transform>();
         playerAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void PlayerMove()
     {
         float moveX = Input.GetAxis("Vertical");
         float moveZ = Input.GetAxis("Horizontal");
 
         transform.Translate(Vector3.forward * moveX * moveSpeed * Time.deltaTime);
         playerAnim.SetFloat("Speed", moveX * moveSpeed * Time.deltaTime);
-        
+
         transform.Translate(Vector3.right * moveZ * moveSpeed * Time.deltaTime);
 
-        float rotateX = Input.GetAxis("Mouse Y") * rotSpeed;
-        float rotateY = Input.GetAxis("Mouse X") * rotSpeed;
 
-        currentRot = rotateX;
         // 특정각도를 넘어가지 않게 예외처리
-        currentRot = Mathf.Clamp(currentRot, -80f, 80f);
 
-        this.transform.localRotation *= Quaternion.Euler(0, rotateY, 0);
-        fpsCam.transform.localEulerAngles = new Vector3(currentRot, 0, 0);
+        this.transform.localRotation = Quaternion.Euler(0, MouseRotate.Instance.eulerAngleY, 0);
+    }
+    
+    // Update is called once per frame
+    void Update()
+    {
+        PlayerMove();
     }
 }
